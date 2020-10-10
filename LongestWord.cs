@@ -18,6 +18,20 @@ namespace CodingChallenges
 {
     class MainClass
     {
+        public static string LongestWord2(string sen)
+        {
+            string oneWord = string.Empty;
+            Regex regx = new Regex(@"[^\w\s]");
+            sen = regx.Replace(sen, "");
+
+            foreach (string item in sen.Split(' '))
+            {
+                if (item.Length > oneWord.Length)
+                    oneWord = item;                
+            }
+            return oneWord;
+        }
+
         public static string LongestWord(string sen)
         {
             // Match all characters that DO NOT(^) match(\w alphanumeric characters) and \s(white space and tab) 
@@ -30,7 +44,7 @@ namespace CodingChallenges
 
         static void Main()
         {
-            Console.WriteLine(LongestWord(Console.ReadLine()));
+            Console.WriteLine(LongestWord2(Console.ReadLine()));
         }
     }
 }
